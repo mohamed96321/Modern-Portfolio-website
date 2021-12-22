@@ -312,6 +312,7 @@ img {
 
 .home__scroll-button:hover {
   transform: translateY(0.25rem);
+  color: var(--first-color-alt);
 }
 
 .home__scroll-mouse {
