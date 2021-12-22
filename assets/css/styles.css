@@ -148,10 +148,6 @@ img {
 }
 
 /*================== Layout =====================*/
-.nav__logo {
-  margin-left: 0.68rem;
-}
-
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -173,6 +169,10 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav__logo{
+  margin-left: var(--mb-0-75);
 }
 
 .nav__logo, .nav__toggle {
@@ -253,10 +253,9 @@ img {
 }
 
 .home__content {
-  display: grid;
+  grid-template-columns: 0.5fr 3fr;
   padding-top: 3.5rem;
   align-items: center;
-  justify-content: center;
 }
 
 .home__social {
@@ -544,16 +543,24 @@ img {
   width: 75%;
 }
 
+.skills__close .skills__list {
+  height: 0;
+  overflow: hidden;
+}
 
-.skills__list {
+.skills__open .skills__list {
   height: max-content;
   margin-bottom: var(--mb-2-5);
+}
+
+.skills__open .skills__arrow {
+  transform: rotate(-180deg);
 }
 
 /*================== Qualification =====================*/
 .qualification__tabs {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-bottom: var(--mb-2);
 }
 
@@ -576,12 +583,15 @@ img {
   display: grid;
   grid-template-columns: 1fr max-content 1fr;
   column-gap: 1.5rem;
-  margin-left: 2.5rem;
 }
 
 .qualification__title {
   font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
+}
+
+.qualification__info {
+  margin-left: var(--mb-1-5);
 }
 
 .qualification__subtitle {
@@ -613,10 +623,6 @@ img {
 
 .qualification__button.qualification__active {
   color: var(--first-color);
-}
-
-.qualification__wall {
-  margin-right: 1.2rem;
 }
 
 /*================== Services =====================*/
@@ -819,6 +825,10 @@ img {
   color: var(--first-color);
 }
 
+.testimonial__stars {
+  fill: #fff;
+}
+
 /*================== Contact Me =====================*/
 .contact__container {
   row-gap: 3rem;
@@ -996,6 +1006,9 @@ img {
   .skills__title {
     font-size: var(--normal-font-size);
   }
+  .qualification__data {
+    gap: 0.5rem;
+  }
 
   .services__container {
     grid-template-columns: max-content;
@@ -1031,6 +1044,10 @@ img {
 
 /* For medium devices */
 @media screen and (min-width: 568px) {
+  .nav__menu {
+    margin-top: 1rem;
+    margin-right: 12px;
+  }
   .home__content {
     grid-template-columns: max-content 1fr 1fr;
   }
@@ -1047,7 +1064,12 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
   .qualification__sections {
-    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(2);
+    justify-content: center;
+  }
+  .qualification__button {
+    padding: 0 5rem;
   }
   .portfolio__container {
     text-align: center;
@@ -1056,10 +1078,7 @@ img {
     padding: 1rem;
   }
   .portfolio__data {
-    margin-top: 1rem;
-  }
-  .portfolio__img {
-    height: 200px;
+    margin-top: var(--mb-1);
   }
 }
 @media screen and (min-width: 768px) {
@@ -1096,24 +1115,22 @@ img {
   }
   .nav__menu {
     margin-left: auto;
-    margin-top: 1rem;
   }
   .change-theme {
     margin: 0;
   }
   .home__container {
-    row-gap: 2rem;
+    row-gap: 5rem;
   }
   .home__content {
     padding-top: 5.5rem;
-    column-gap: 3rem;
+    column-gap: 2rem;
   }
   .home__blob {
     width: 270px;
   }
   .home__scroll {
     display: block;
-
   }
   .home__scroll-button {
     margin-left: 3rem;
@@ -1137,16 +1154,12 @@ img {
     justify-content: center;
   }
   .qualification__button {
-    margin: 0 5rem;
+    margin: 0 var(--mb-1);
   }
   .qualification__sections {
-    display: grid;
-    grid-template-columns: 0.5fr;
-    justify-content: space-around;
+    grid-template-columns: repeat(2, 1fr);
   }
-  .qualification__sections {
-    padding: 0;
-  }
+
   .services__container {
     grid-template-columns: repeat(3, 218px);
     justify-content: center;
@@ -1157,17 +1170,12 @@ img {
   .services__content {
     padding: 6rem 0 2rem 2.5rem;
   }
-  .services__modal {
-    width: 450px;
-  }
+
   .portfolio__img {
     width: 320px;
   }
   .portfolio__container {
     align-items: center;
-  }
-  .portfolio__data {
-    margin-top: var(--mb-1);
   }
   .project {
     text-align: initial;
@@ -1208,32 +1216,25 @@ img {
     padding: 0;
   }
   .home__content {
-    margin-left: auto;
-    margin-right: 2.5rem;
-    justify-content: center;
     display: flex;
-    align-items: center;
   }
 
+  .home__container {
+    justify-content: center;
+    margin-right: 0;
+    margin-left: auto;
+  }
   .home__blob {
-    width: 360px;
+    width: 320px;
   }
   .home__social {
-    margin-right: 7rem;
-  }
-  .home__scroll {
-    display: block;
-    margin-left: 10rem;
+    transform: translateX(-6rem);
   }
   .services__container {
     grid-template-columns: repeat(3, 238px);
   }
-  .qualification__tabs {
-    justify-content: space-evenly;
-    padding: 0 7.5rem;
-  }
   .portfolio__content {
-    column-gap: 5rem;
+    column-gap: 2rem;
   }
   .contact__form {
     width: 460px;
@@ -1241,10 +1242,7 @@ img {
   .contact__inputs {
     grid-template-columns: repeat(2, 1fr);
   }
-  .qualification__wall {
-    margin-right: 2rem;
-  }
-  .work {
-    margin-right: 9rem;
+  .qualification__button {
+    margin: 0 4rem 0 5rem;
   }
 }
